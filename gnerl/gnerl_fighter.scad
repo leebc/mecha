@@ -96,7 +96,7 @@ engine3_z_offset=engine_b_calculated*2/3;
 e_shift=9/12;
 
 rear_section_length=scaled_length*30/150;
-gun_barrel_radius=0.3;
+gun_barrel_radius=0.4;
 
 difference()
 {	// The Hull
@@ -194,7 +194,7 @@ union(){
 	color("lightgrey"){
 		translate([scaled_length* 105/150,0,1.0])	rotate([0,90,0])
 			difference()		{
-				cylinder(r1=calculated_engine_diameter*0.50/4,
+				cylinder(r1=calculated_engine_diameter*0.45/4,
 						r2=calculated_engine_diameter*0.40/4,
 						h=scaled_length* 5/150,$fn=FN);
 				translate([0,0,scaled_length* 3/150])
@@ -203,16 +203,16 @@ union(){
 							h=scaled_length* 6/150,$fn=FN);
 			}
 		translate([scaled_length* 105/150,0,-1.5])	rotate([0,90,0])
-			cylinder(r1=calculated_engine_diameter*0.60/4,
-					r2=calculated_engine_diameter*0.50/4,
+			cylinder(r1=calculated_engine_diameter*0.65/4,
+					r2=calculated_engine_diameter*0.55/4,
 					h=scaled_length* 5/150,$fn=FN);				
 		} 
 
 	// Gun Barrels
 	color("slategrey")	{
 		translate([scaled_length* 110/150,0,-1.5])	rotate([0,90,0])
-			cylinder(r1=calculated_engine_diameter*0.50/4,
-					r2=calculated_engine_diameter*0.40/4,
+			cylinder(r1=calculated_engine_diameter*0.55/4,
+					r2=calculated_engine_diameter*0.45/4,
 					h=scaled_length* 3/150,$fn=FN);
 		translate([scaled_length* 113/150,0,-1.5])	rotate([0,90,0])	{
 			translate([-gun_barrel_radius*2/3,-gun_barrel_radius,0])
