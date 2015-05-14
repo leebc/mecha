@@ -14,7 +14,7 @@ echo ("scale_bounding_box",scale_bounding_box);
 color("lightblue",0.1)
 ;//	cube(scale_bounding_box, center=true);
 
-translate([scaled_length*-3/15,0,0])
+*translate([scaled_length*-3/15,0,0])
 	color("red")		cube([scaled_length,1,1],center=false);
 //color("red")		cube([1,scaled_width,1],center=true);
 //color("red")		cube([1,1,scaled_height],center=true);
@@ -283,7 +283,7 @@ union(){
 // Fins are at 40 degrees
 // Fins are 3/15
 fin_attack_angle=40;
-//  This block puts the fins in the correct position for the mecha
+			//  This block puts the fins in the correct position for the mecha
 * color("purple"){
 	translate([-5,0,15.5])
 		rotate([0,fin_attack_angle,0])
@@ -321,23 +321,23 @@ rotate([-120,0,0])
 }
 	
 
- color("blue"){
 // Engine bells
-translate([+2,-20,9]){
-	translate([-2,engine12_y_offset*e_shift, engine12_z_offset*e_shift])
-		rotate([0,90,0])		// engine 1 stbd
-			color("red")		engine_bell(calculated_engine_diameter);
-	translate([-2,-1*engine12_y_offset*e_shift,engine12_z_offset*e_shift])	
-		rotate([0,90,0])		// engine 2 port		
-			color("green")	engine_bell(calculated_engine_diameter);
-	translate([-2,0,engine3_z_offset*e_shift])							
-		rotate([0,90,0])		// engine 3 top
-			color("yellow")	engine_bell(calculated_engine_diameter);
+color("blue"){
+	translate([+2,-20,9]){
+		translate([-2,engine12_y_offset*e_shift, engine12_z_offset*e_shift])
+			rotate([0,90,0])		// engine 1 stbd
+				color("red")		engine_bell(calculated_engine_diameter);
+		translate([-2,-1*engine12_y_offset*e_shift,engine12_z_offset*e_shift])	
+			rotate([0,90,0])		// engine 2 port		
+				color("green")	engine_bell(calculated_engine_diameter);
+		translate([-2,0,engine3_z_offset*e_shift])							
+			rotate([0,90,0])		// engine 3 top
+				color("yellow")	engine_bell(calculated_engine_diameter);
+	}
 }
-}
 
 
-
+color("purple"){
  translate([0,10,15])
 		rotate([0,90,0])
 			finn(scaled_length*4/15); 
@@ -347,8 +347,7 @@ translate([+2,-20,9]){
  translate([0,30,15])
 		rotate([0,90,0])
 			finn(scaled_length*4/15); 
-
-
+}
 
 
 
