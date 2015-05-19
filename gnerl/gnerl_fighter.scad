@@ -120,7 +120,7 @@ union(){
             	points = [	[0,engine12_y_offset,engine12_z_offset],
 						[0,-1*engine12_y_offset,engine12_z_offset],
 						[0,0,engine3_z_offset],
-						[scaled_length*16/32,0,0] ] ,
+						[scaled_length*22/32,0,0] ] ,
 			triangles = [   [0,2,1],[0,1,3],[0,3,2],[1,2,3]]        );
 
 	// Middle Hull Section
@@ -284,7 +284,7 @@ union(){
 // Fins are 3/15
 fin_attack_angle=40;
 			//  This block puts the fins in the correct position for the mecha
-* color("purple"){
+color("purple"){
 	translate([-5,0,15.5])
 		rotate([0,fin_attack_angle,0])
 			finn(scaled_length*4/15); 
@@ -299,7 +299,7 @@ rotate([-120,0,0])
 }
 
 // Small Fins
- color("LightSteelBlue"){
+* color("LightSteelBlue"){
 	translate([0,6,15])
 		rotate([0,90,0])
 			finn(4);
@@ -323,7 +323,7 @@ rotate([-120,0,0])
 
 // Engine bells
 color("blue"){
-	translate([+2,-20,9]){
+//	translate([+2,-20,9]){
 		translate([-2,engine12_y_offset*e_shift, engine12_z_offset*e_shift])
 			rotate([0,90,0])		// engine 1 stbd
 				color("red")		engine_bell(calculated_engine_diameter);
@@ -333,11 +333,11 @@ color("blue"){
 		translate([-2,0,engine3_z_offset*e_shift])							
 			rotate([0,90,0])		// engine 3 top
 				color("yellow")	engine_bell(calculated_engine_diameter);
-	}
+//	}
 }
 
 
-color("purple"){
+*color("purple"){
  translate([0,10,15])
 		rotate([0,90,0])
 			finn(scaled_length*4/15); 
