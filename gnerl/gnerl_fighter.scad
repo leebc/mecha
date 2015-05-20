@@ -9,15 +9,20 @@ scaled_length	=	spec_length*scale;	// mm
 scaled_width	=	spec_width*scale;	// mm
 scaled_height	=	spec_height*scale;	// mm
 
+print_rotation_vector=[0,-90,0];
+
 scale_bounding_box=[spec_length*scale, spec_width*scale, spec_height*scale];
 echo ("scale_bounding_box",scale_bounding_box);
 color("lightblue",0.1)
-;//	cube(scale_bounding_box, center=true);
+;//cube(scale_bounding_box, center=true);
 
-*translate([scaled_length*-3/15,0,0])
-	color("red")		cube([scaled_length,1,1],center=false);
+//translate([scaled_length*-3/15,0,0])
+*	color("red")		rotate (print_rotation_vector)  cube([scaled_length,1,1],center=false);
 //color("red")		cube([1,scaled_width,1],center=true);
 //color("red")		cube([1,1,scaled_height],center=true);
+
+// Cube to check print bed location
+* color("red")	rotate (print_rotation_vector) translate([-25,0,-9])	cube([50,50,50],center=true);
 
 measured_scale=scaled_width/294;
 calculated_engine_diameter=58 * measured_scale;
@@ -97,6 +102,11 @@ e_shift=9/12;
 
 rear_section_length=scaled_length*30/150;
 gun_barrel_radius=0.4;
+
+
+
+//Rotation for print
+rotate (print_rotation_vector){
 
 difference()
 {	// The Hull
@@ -260,12 +270,15 @@ union(){
 	}	// End union
 }	// End Difference
 
+}// End print rotation
+
 
 	// Venty Things
-	vent_diameter=calculated_engine_diameter/6;
-	vent_rear_position=scaled_length* 35/150;
-	vent_z_position=0.5;
-	color("lightgrey"){
+vent_diameter=calculated_engine_diameter/6;
+vent_rear_position=scaled_length* 35/150;
+vent_z_position=0.5;
+color("lightgrey")
+	rotate (print_rotation_vector){
 		translate([vent_rear_position,-1.5,vent_z_position])
 			rotate([90,0,0])
 				exhaust_vent(vent_diameter);
@@ -278,52 +291,77 @@ union(){
 		translate([vent_rear_position+2.75*vent_diameter,1.5,vent_z_position])
 			rotate([-90,0,0])
 				exhaust_vent(vent_diameter);
-}
+	}
 
+
+//  This block puts the fins in the correct position for rendering the mecha
 // Fins are at 40 degrees
 // Fins are 3/15
 fin_attack_angle=40;
-			//  This block puts the fins in the correct position for the mecha
-color("purple"){
-	translate([-5,0,15.5])
-		rotate([0,fin_attack_angle,0])
-			finn(scaled_length*4/15); 
-rotate([120,0,0])
-	translate([-5,0,15.5])
-		rotate([0,fin_attack_angle,0])
-			finn(scaled_length*4/15); 
-rotate([-120,0,0])
-	translate([-5,0,15.5])
-		rotate([0,fin_attack_angle,0])		
-			finn(scaled_length*4/15); 
-}
+*color("purple")
+	rotate (print_rotation_vector)
+	{
+	rotate([0,fin_attack_angle,0])
+		translate([-5,0,15.5])
+				finn(scaled_length*4/15); 
+	rotate([120,0,0])
+		translate([-5,0,15.5])
+			rotate([0,fin_attack_angle,0])
+				finn(scaled_length*4/15); 
+	rotate([-120,0,0])
+		translate([-5,0,15.5])
+			rotate([0,fin_attack_angle,0])		
+				finn(scaled_length*4/15); 
+	}
 
+
+//  This block puts the fins in the correct position for printing the mecha
+color("purple")
+	rotate (print_rotation_vector)
+		translate([0.5,0,0])	// Fix alignment
+	{
+		translate([0,10,15])
+			rotate([0,90,0])
+				finn(scaled_length*4/15); 
+		 translate([0,20,15])
+			rotate([0,90,0])
+				finn(scaled_length*4/15); 
+		 translate([0,30,15])
+			rotate([0,90,0])
+				finn(scaled_length*4/15); 
+	}
+	
 // Small Fins
-* color("LightSteelBlue"){
-	translate([0,6,15])
-		rotate([0,90,0])
-			finn(4);
-	translate([0,3,15])
-		rotate([0,90,0])
-			finn(4);
-	translate([0,0,15])
-		rotate([0,90,0])
-			finn(4);
-	translate([0,-3,15])
-		rotate([0,90,0])
-			finn(4);
-	translate([0,-6,15])
-		rotate([0,90,0])
-			finn(4);
-	translate([0,-9,15])
-		rotate([0,90,0])
-			finn(4);
-}
+color("LightSteelBlue")
+	rotate (print_rotation_vector)
+		translate([0.5,0,0])	// Fix alignment
+	{
+		translate([0,6,15])
+			rotate([0,90,0])
+				finn(4);
+		translate([0,3,15])
+			rotate([0,90,0])
+				finn(4);
+		translate([0,0,15])
+			rotate([0,90,0])
+				finn(4);
+		translate([0,-3,15])
+			rotate([0,90,0])
+				finn(4);
+		translate([0,-6,15])
+			rotate([0,90,0])
+				finn(4);
+		translate([0,-9,15])
+			rotate([0,90,0])
+				finn(4);
+	}
 	
 
 // Engine bells
 color("blue"){
-//	translate([+2,-20,9]){
+	rotate (print_rotation_vector)
+		translate([+2,-20,9])
+	{
 		translate([-2,engine12_y_offset*e_shift, engine12_z_offset*e_shift])
 			rotate([0,90,0])		// engine 1 stbd
 				color("red")		engine_bell(calculated_engine_diameter);
@@ -333,21 +371,9 @@ color("blue"){
 		translate([-2,0,engine3_z_offset*e_shift])							
 			rotate([0,90,0])		// engine 3 top
 				color("yellow")	engine_bell(calculated_engine_diameter);
-//	}
+	}
 }
 
-
-*color("purple"){
- translate([0,10,15])
-		rotate([0,90,0])
-			finn(scaled_length*4/15); 
- translate([0,20,15])
-		rotate([0,90,0])
-			finn(scaled_length*4/15); 
- translate([0,30,15])
-		rotate([0,90,0])
-			finn(scaled_length*4/15); 
-}
 
 
 
