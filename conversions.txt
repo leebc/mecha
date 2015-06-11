@@ -1,0 +1,28 @@
+Michael Arnold‎Robotech Tactics "Unofficial" (RTU)
+1 hr ·
+
+Converting from the RPG...for those who did not know
+
+1 inch = 333', or 111 yards, or about 3" per 1000' of RPG range
+1 MDC = Main body MDC / 25 (rd up)
+1 MD = Maximum weapon damage / 20 (rd up)
+1 Turn = 9 seconds
+1 MP = 25 mph (rd normal)
+
+Weapon ranges are often modified towards a 12-24" range (either added or reduced) to make it more friendly to most tabletop gamers.
+
+If you use 1 SPD per 30 MPH for Hovering units like the Commanchero or a Guardian mode VT and 1 per 90 for flying units and giving them afterburner it works out pretty well.
+
+For Walking
+1-16 MPH = 1 or Leap 1
+17-32 = 2 or Leap 1
+33-48 = 3 or Leap 2
+49-64 = 4 or Leap 2
+65=79 = 5 or Leap 3
+80-95 = 6 or Leap 3
+96-116 = 7 or Leap 4
+117-136 = 8 or Leap 4
+137-157 = 9 or Leap 5
+156-172 = 10 or Leap 6
+173-192 = 11 or Leap 7
+193+ = 12 or Leap 8
